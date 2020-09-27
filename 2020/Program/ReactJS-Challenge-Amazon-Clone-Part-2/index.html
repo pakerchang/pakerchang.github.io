@@ -597,26 +597,6 @@ window.addEventListener('pjax:success', () => {
 
   
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-<script>
-NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
-    var gitalk = new Gitalk({
-      clientID    : 'eb7a26f8758372c09682',
-      clientSecret: 'c9ee983d2f44c7ed3a393e04dac6f6ef1da2e54f',
-      repo        : 'pakerchang.github.io',
-      owner       : 'pakerchang',
-      admin       : ['pakerchang'],
-      id          : 'd7291a8734de94945bccfce81450fd39',
-        language: 'zh-TW',
-      distractionFreeMode: true
-    });
-    gitalk.render('gitalk-container');
-  }, window.Gitalk);
-});
-</script>
-
 <script>
   var disqus_config = function() {
     this.page.url = "https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/";
@@ -636,6 +616,26 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       (d.head || d.body).appendChild(s);
     }
   });
+</script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'eb7a26f8758372c09682',
+      clientSecret: 'c9ee983d2f44c7ed3a393e04dac6f6ef1da2e54f',
+      repo        : 'pakerchang.github.io',
+      owner       : 'pakerchang',
+      admin       : ['pakerchang'],
+      id          : 'd7291a8734de94945bccfce81450fd39',
+        language: 'zh-TW',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
 </script>
 
     </div>
