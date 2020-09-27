@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pakerchang.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":{"disqus":{"text":"Load Disqus","order":-1},"gitalk":{"order":-2}},"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="前言 Hexo目前是許多人使用的 Blog 框架，好處是架設簡單快速  原本打算自己寫一個，最後發現太過耗時，因緣際會下才找到 Hexo 這個好東西 此文主要是紀錄、複習安裝 Hexo 與 NexT 主題的過程，包括一些自己碰到的問題  Hexo安裝＆基礎設置 在裝Hexo前，需要先確保 node.js 及 git 安裝完畢 安裝Hexo 開啟終端 1npm install hexo-cli -g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo+NexT 安裝與部署">
+<meta property="og:url" content="https://pakerchang.github.io/2020/Program/Hexo-NexT-%E5%AE%89%E8%A3%9D%E8%88%87%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:site_name" content="PakerChang&#39;s Blog">
+<meta property="og:description" content="前言 Hexo目前是許多人使用的 Blog 框架，好處是架設簡單快速  原本打算自己寫一個，最後發現太過耗時，因緣際會下才找到 Hexo 這個好東西 此文主要是紀錄、複習安裝 Hexo 與 NexT 主題的過程，包括一些自己碰到的問題  Hexo安裝＆基礎設置 在裝Hexo前，需要先確保 node.js 及 git 安裝完畢 安裝Hexo 開啟終端 1npm install hexo-cli -g">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://pakerchang.github.io/2020/Program/Hexo-NexT-%E5%AE%89%E8%A3%9D%E8%88%87%E9%83%A8%E7%BD%B2/hexo-cli-warn.png">
+<meta property="og:image" content="https://pakerchang.github.io/2020/Program/Hexo-NexT-%E5%AE%89%E8%A3%9D%E8%88%87%E9%83%A8%E7%BD%B2/localhost.png">
+<meta property="og:image" content="https://pakerchang.github.io/2020/Program/Hexo-NexT-%E5%AE%89%E8%A3%9D%E8%88%87%E9%83%A8%E7%BD%B2/repo-create.png">
+<meta property="og:image" content="https://pakerchang.github.io/2020/Program/Hexo-NexT-%E5%AE%89%E8%A3%9D%E8%88%87%E9%83%A8%E7%BD%B2/repo-start.png">
+<meta property="og:image" content="https://pakerchang.github.io/2020/Program/Hexo-NexT-%E5%AE%89%E8%A3%9D%E8%88%87%E9%83%A8%E7%BD%B2/folderS.png">
+<meta property="article:published_time" content="2020-07-21T15:36:12.000Z">
+<meta property="article:modified_time" content="2020-08-22T23:15:54.000Z">
+<meta property="article:author" content="Paker Chang">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="學習">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pakerchang.github.io/2020/Program/Hexo-NexT-%E5%AE%89%E8%A3%9D%E8%88%87%E9%83%A8%E7%BD%B2/hexo-cli-warn.png">
+
+<link rel="canonical" href="https://pakerchang.github.io/2020/Program/Hexo-NexT-%E5%AE%89%E8%A3%9D%E8%88%87%E9%83%A8%E7%BD%B2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Hexo+NexT 安裝與部署 | PakerChang's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PakerChang's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">紀錄學習生活的大小事</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://pakerchang.github.io/2020/Program/Hexo-NexT-%E5%AE%89%E8%A3%9D%E8%88%87%E9%83%A8%E7%BD%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Paker Chang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PakerChang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo+NexT 安裝與部署
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-07-21 23:36:12" itemprop="dateCreated datePublished" datetime="2020-07-21T23:36:12+08:00">2020-07-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-08-23 07:15:54" itemprop="dateModified" datetime="2020-08-23T07:15:54+08:00">2020-08-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Program/" itemprop="url" rel="index"><span itemprop="name">Program</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>3 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a class="header-anchor" href="#前言"></a>前言</h2>
+<p><strong>Hexo目前是許多人使用的 Blog 框架，好處是架設簡單快速</strong></p>
+<blockquote>
+<p>原本打算自己寫一個，最後發現太過耗時，因緣際會下才找到 Hexo 這個好東西<br>
+此文主要是紀錄、複習安裝 Hexo 與 NexT 主題的過程，包括一些自己碰到的問題</p>
+</blockquote>
+<h2 id="Hexo安裝＆基礎設置"><a class="header-anchor" href="#Hexo安裝＆基礎設置"></a><strong>Hexo安裝＆基礎設置</strong></h2>
+<p>在裝Hexo前，需要先確保 node.js 及 git 安裝完畢</p>
+<h3 id="安裝Hexo"><a class="header-anchor" href="#安裝Hexo"></a><strong>安裝Hexo</strong></h3>
+<p>開啟終端</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>這邊曾碰過一個問題是</p>
+<p><img src="hexo-cli-warn.png" alt="hexo-cli-warn"></p>
+<p>後來發現可能是因為版本更新問題，Hexo不再支援hexo-bunyan的問題<br>
+導致之後hexo init時會初始化不成功，只要補上這段就可以了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-log</span><br></pre></td></tr></table></figure>
+<p><strong>安裝好之後可以檢查版本，如果有跳出就成功了</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
+<p>將終端切換到要初始化 Blog 文件的路徑後，執行：</p>
+<blockquote>
+<p>如果安裝時出現了路徑 is not empty，是因為安裝的資料夾內必須是淨空的，此條件下才能產生初始化檔案</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog <span class="comment">#初始化blog (資料夾名)</span></span><br><span class="line"><span class="built_in">cd</span> blog <span class="comment">#切換到資料夾</span></span><br><span class="line">npm install ＃安裝相關套件</span><br></pre></td></tr></table></figure>
+<p>嘗試運行指令，測試能不能成功在 localhost 執行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g <span class="comment">#產生靜態文件</span></span><br><span class="line">hexo s <span class="comment">#運行localhost</span></span><br></pre></td></tr></table></figure>
+<p>成功的話應該會看到</p>
+<blockquote>
+<p>CMD + 點擊網址就能直接開啟<br>
+<img src="localhost.png" alt="localhost"></p>
+</blockquote>
+<h3 id="將-Hexo-配置到-GitHub"><a class="header-anchor" href="#將-Hexo-配置到-GitHub"></a><strong>將 Hexo 配置到 GitHub</strong></h3>
+<p>到 <a target="_blank" rel="noopener" href="https://github.com/new">Github</a> 創建一個新的 repository</p>
+<blockquote>
+<p>在Repository name 替換成自己的名稱設置，點擊 Create</p>
+</blockquote>
+<p><img src="repo-create.png" alt="repo-create"></p>
+<p>進到這個頁面複製第一欄內的網址後，就能回來 Hexo 準備基礎設置了</p>
+<blockquote>
+<p>複製SSH也可以，但如果沒有設定過 Github 的 SSH 配對，直接用 HTTPS 就好</p>
+</blockquote>
+<p><img src="repo-start.png" alt="repo-start"></p>
+<p>開啟 blog 資料夾後找到 _config.yml</p>
+<p><img src="folderS.png" alt="folderS"></p>
+<p>點開之後拉到檔案最底部可以看到</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>將以下資訊對應輸入</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">reop:</span> <span class="string">http://github.com/yourname/yourname.github.io.git</span> <span class="comment">#Https or SSH</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span> </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>將上面的 repo 貼上剛剛在 Github 上複製的連結</p>
+</blockquote>
+<h3 id="Hexo-配置檔介紹"><a class="header-anchor" href="#Hexo-配置檔介紹"></a><strong>Hexo 配置檔介紹</strong></h3>
+<blockquote>
+<p>下面是 hexo 的預設配置，可以自修改</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="comment">#標題</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="comment">#子標題</span></span><br><span class="line"><span class="attr">description:</span> <span class="comment">#內容描述</span></span><br><span class="line"><span class="attr">author:</span> <span class="comment">#作者</span></span><br><span class="line"><span class="attr">language:</span> <span class="comment">#網站預設語言 台灣:zh-tw</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="comment">#時區 Exsample : Asia/Taipei</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="attr">url:</span> <span class="comment">#網站的網域位址</span></span><br><span class="line"><span class="attr">root:</span> <span class="comment">#網站根目錄</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="comment">#文章目錄</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="attr">theme:</span> <span class="comment">#網站的佈景主題</span></span><br><span class="line">       </span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="comment">#發佈型態  例如 git、heroku、rsync、openshift、ftpsync</span></span><br><span class="line">    <span class="attr">repository:</span> <span class="comment">#部署位置 git@github.com:帳號/REPO名.git</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="comment">#分支 master、gh-pages</span></span><br><span class="line">    <span class="attr">message:</span> <span class="comment">#部署訊息</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="更換-Blog-主題"><a class="header-anchor" href="#更換-Blog-主題"></a>更換 Blog 主題</h3>
+<blockquote>
+<p>如果覺得預設的主體不喜歡，可以到 <a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo Themes</a> 選擇一個喜歡的更換<br>
+接下來會以 NexT 主題為範例設置<br>
+每個主體的安裝方式都大同小異，詳細請到該主體的安裝說明查看<br>
+#PS Hexo和 themes內都會有各有一個 _config.yml 對應的設置都不同</p>
+</blockquote>
+<p>切換終端至 blog 路徑，使用指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>回到 Hexo 的 _config.yml 找到</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="attr">theme:</span> <span class="comment">#網站的佈景主題</span></span><br></pre></td></tr></table></figure>
+<p>將 theme 改成 next</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+<p>回到終端之後重新產生靜態文件，啟動 loacl host 生成網頁</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>重新連上localhost後就能看到新的主題了</p>
+<h3 id="發布文章"><a class="header-anchor" href="#發布文章"></a>發布文章</h3>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;title name&quot;</span> <span class="comment">#產生文章</span></span><br><span class="line">hexo new pages <span class="string">&quot;name&quot;</span> <span class="comment">#產生頁面</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果文章的命名內容內有空格 必須用 &quot; &quot; 把命名包起來<br>
+之後會在 _posts 內看到產生一個 title-name.md的檔案，點開後就可以開始編輯文章啦</p>
+</blockquote>
+<p>一些相關設定的連結會放在下面，之後有整理的話也會陸續寫一篇文章發佈出來</p>
+<ul>
+<li><a href="https://pakerchang.github.io/2020/0721/Program/Hexo%E6%96%87%E7%AB%A0%E6%90%9C%E9%9B%86/">Hexo 文章蒐集</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag"># 學習</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/Program/Hexo%E6%96%87%E7%AB%A0%E6%90%9C%E9%9B%86/" rel="prev" title="Hexo文章搜集">
+      <i class="fa fa-chevron-left"></i> Hexo文章搜集
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/Program/Markdown-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/" rel="next" title="Markdown 常用語法">
+      Markdown 常用語法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
+            <li class="tab"><a href="#comment-disqus">Load Disqus</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments" id="gitalk-container"></div>
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E5%AE%89%E8%A3%9D%EF%BC%86%E5%9F%BA%E7%A4%8E%E8%A8%AD%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">Hexo安裝＆基礎設置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DHexo"><span class="nav-number">2.1.</span> <span class="nav-text">安裝Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%87-Hexo-%E9%85%8D%E7%BD%AE%E5%88%B0-GitHub"><span class="nav-number">2.2.</span> <span class="nav-text">將 Hexo 配置到 GitHub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-%E9%85%8D%E7%BD%AE%E6%AA%94%E4%BB%8B%E7%B4%B9"><span class="nav-number">2.3.</span> <span class="nav-text">Hexo 配置檔介紹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8F%9B-Blog-%E4%B8%BB%E9%A1%8C"><span class="nav-number">2.4.</span> <span class="nav-text">更換 Blog 主題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BC%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-number">2.5.</span> <span class="nav-text">發布文章</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Paker Chang"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Paker Chang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/pakerchang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;pakerchang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/pakerchang@gmail.com" title="E-Mail → pakerchang@gmail.com"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Paker Chang</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">16k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">29 分鐘</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://pakerchang.github.io/2020/Program/Hexo-NexT-%E5%AE%89%E8%A3%9D%E8%88%87%E9%83%A8%E7%BD%B2/";
+    this.page.identifier = "2020/Program/Hexo-NexT-安裝與部署/";
+    this.page.title = "Hexo+NexT 安裝與部署";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://pakerchang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'eb7a26f8758372c09682',
+      clientSecret: 'c9ee983d2f44c7ed3a393e04dac6f6ef1da2e54f',
+      repo        : 'pakerchang.github.io',
+      owner       : 'pakerchang',
+      admin       : ['pakerchang'],
+      id          : 'a0091148dd84950f17126b193ab5ec41',
+        language: 'zh-TW',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>
