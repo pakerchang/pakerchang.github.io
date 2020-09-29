@@ -186,6 +186,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-Clone-Redux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Paker Chang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PakerChang's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/Program/ReactJS-Challenge-Amazon-Clone-Redux/" class="post-title-link" itemprop="url">ReactJS Challenge-Amazon Clone Redux</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-09-29 22:25:58 / 修改時間：22:31:33" itemprop="dateCreated datePublished" datetime="2020-09-29T22:25:58+08:00">2020-09-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Program/" itemprop="url" rel="index"><span itemprop="name">Program</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="StateProvider-js"><a class="header-anchor" href="#StateProvider-js"></a>StateProvider.js</h1>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; createContext, useContext, useReducer &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Prepares the datalayer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> StateContext = createContext();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wrap our app and provide the data layer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> StateProvider = <span class="function">(<span class="params">&#123; reducer, initialState, children &#125;</span>) =&gt;</span> (</span><br><span class="line">	&lt;StateContext.Provider value=&#123;useReducer(reducer, initialState)&#125;&gt;</span><br><span class="line">		&#123;children&#125;</span><br><span class="line">	&lt;/StateContext.Provider&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pull information from the data layer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useStateValue = <span class="function">() =&gt;</span> useContext(StateContext);</span><br></pre></td></tr></table></figure>
+<h1 id="reducer-js"><a class="header-anchor" href="#reducer-js"></a>reducer.js</h1>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> initialState = &#123;</span><br><span class="line">	basket: [],</span><br><span class="line">	user: <span class="literal">null</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getBasketTotal = <span class="function">(<span class="params">basket</span>) =&gt;</span></span><br><span class="line">	<span class="comment">// 初始化購物車內價格總額數值，編譯加總</span></span><br><span class="line">	basket?.reduce(<span class="function">(<span class="params">amount, item</span>) =&gt;</span> item.price + amount, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(action);</span><br><span class="line">	<span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">		<span class="comment">// 上傳 Product組建內容</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">&quot;ADD_TO_BASKET&quot;</span>:</span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">				...state,</span><br><span class="line">				basket: [...state.basket, action.item],</span><br><span class="line">			&#125;;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">&quot;REMOVE_FROM_BASKET&quot;</span>:</span><br><span class="line">			<span class="comment">// 移除購物車商品</span></span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">				...state,</span><br><span class="line">				basket: state.basket.filter(<span class="function">(<span class="params">item</span>) =&gt;</span> action.id !== item.id),</span><br><span class="line">			&#125;;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">return</span> state;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> reducer;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 呼叫 redux</span></span><br><span class="line"><span class="keyword">const</span> [&#123; basket &#125;, dispatch] = useStateValue();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -217,7 +303,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-09-27 03:13:47" itemprop="dateModified" datetime="2020-09-27T03:13:47+08:00">2020-09-27</time>
+                <time title="修改時間：2020-09-29 22:31:15" itemprop="dateModified" datetime="2020-09-29T22:31:15+08:00">2020-09-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,14 +321,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>3.2k</span>
+              <span>4.5k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>6 分鐘</span>
+              <span>8 分鐘</span>
             </span>
 
         </div>
@@ -318,7 +404,7 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-09-29 22:18:50" itemprop="dateModified" datetime="2020-09-29T22:18:50+08:00">2020-09-29</time>
+                <time title="修改時間：2020-09-29 22:31:00" itemprop="dateModified" datetime="2020-09-29T22:31:00+08:00">2020-09-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -414,7 +500,7 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-23 07:15:00" itemprop="dateModified" datetime="2020-08-23T07:15:00+08:00">2020-08-23</time>
+                <time title="修改時間：2020-09-29 13:17:05" itemprop="dateModified" datetime="2020-09-29T13:17:05+08:00">2020-09-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -512,7 +598,7 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-23 07:14:49" itemprop="dateModified" datetime="2020-08-23T07:14:49+08:00">2020-08-23</time>
+                <time title="修改時間：2020-09-29 13:17:05" itemprop="dateModified" datetime="2020-09-29T13:17:05+08:00">2020-09-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -610,7 +696,7 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-23 07:16:48" itemprop="dateModified" datetime="2020-08-23T07:16:48+08:00">2020-08-23</time>
+                <time title="修改時間：2020-09-29 13:17:05" itemprop="dateModified" datetime="2020-09-29T13:17:05+08:00">2020-09-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -712,7 +798,7 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-23 07:15:54" itemprop="dateModified" datetime="2020-08-23T07:15:54+08:00">2020-08-23</time>
+                <time title="修改時間：2020-09-29 13:17:05" itemprop="dateModified" datetime="2020-09-29T13:17:05+08:00">2020-09-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -817,7 +903,7 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-23 07:16:12" itemprop="dateModified" datetime="2020-08-23T07:16:12+08:00">2020-08-23</time>
+                <time title="修改時間：2020-09-29 13:17:05" itemprop="dateModified" datetime="2020-09-29T13:17:05+08:00">2020-09-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -950,7 +1036,7 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -1007,12 +1093,12 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">15k</span>
+    <span title="總字數">18k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">28 分鐘</span>
+    <span title="所需總閱讀時間">32 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
   </div>

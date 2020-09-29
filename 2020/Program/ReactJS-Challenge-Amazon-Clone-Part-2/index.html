@@ -28,11 +28,13 @@
 <meta property="og:description" content="前言 進入 Part 2 階段了，前一章做了導覽列( Header )、homepage 展示內容。 此章節主要大綱使用 React-Router-DOM 來分派主次頁面路徑，並製作購物車頁面 React Router DOM 一款由 React Router 延伸出來的套件，基本功能是 Router, Switch, Route, Link，簡單看了一下 Google 的反饋的資料，大致概念應該">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/origin.png">
+<meta property="og:image" content="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/getBasketinfo-removebtn.png">
 <meta property="article:published_time" content="2020-09-23T20:00:31.000Z">
-<meta property="article:modified_time" content="2020-09-26T19:13:47.945Z">
+<meta property="article:modified_time" content="2020-09-29T14:31:15.461Z">
 <meta property="article:author" content="Paker Chang">
-<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="學習">
 <meta property="article:tag" content="React">
+<meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="Clone Project">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/origin.png">
@@ -225,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-09-27 03:13:47" itemprop="dateModified" datetime="2020-09-27T03:13:47+08:00">2020-09-27</time>
+                <time title="修改時間：2020-09-29 22:31:15" itemprop="dateModified" datetime="2020-09-29T22:31:15+08:00">2020-09-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,14 +245,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>3.2k</span>
+              <span>4.5k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>6 分鐘</span>
+              <span>8 分鐘</span>
             </span>
 
         </div>
@@ -285,14 +287,19 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
 <p><code>fit-content</code> 將元素寬度收縮成內容寬度，我的理解應該是類 padding 的空間收縮到內容物等寬的程度</p>
 <p><code>max-content</code>采用內部元素寬度值最大的那個元素的寬度作為最終容器的寬度，我是把這段話當成類似無條件進位的概念，取該元素內最大寬度內容為最終值</p>
 <p><code>min-content</code> 采用內部元素最小寬度值最大的元素單位寬度，例如 img 中的圖片渲染時的初始寬度，<code>p</code> 、<code>h1</code>這類文本元素內的文字寬度，中文就是以一個字為基本單位，所以最大寬度理解相對簡單，英文則是默認一個單字為單位，在該 tag 中的文本會以最長的單字為取樣單位</p>
+<h3 id="購物車清單的主體"><a class="header-anchor" href="#購物車清單的主體"></a>購物車清單的主體</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./CheckoutProduct.css&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useStateValue &#125; <span class="keyword">from</span> <span class="string">&quot;./StateProvider&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CheckoutProduct</span>(<span class="params">id, image, title, price, rating</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> [&#123; basket &#125;, dispatch] = useStateValue();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		&lt;div className=<span class="string">&quot;checkoutProduct&quot;</span>&gt;</span><br><span class="line">			&lt;img className=<span class="string">&quot;checkProduct__image&quot;</span> src=&#123;image&#125; alt=<span class="string">&quot;&quot;</span> /&gt;</span><br><span class="line">			&lt;div className=<span class="string">&quot;checkProduct__info&quot;</span>&gt;</span><br><span class="line">				&lt;p&gt;&#123;title&#125;&lt;/p&gt;</span><br><span class="line">				&lt;p className=<span class="string">&quot;checkoutProduct__price&quot;</span>&gt;</span><br><span class="line">					&lt;small&gt;$&lt;/small&gt;</span><br><span class="line">					&lt;strong&gt;&#123;price&#125;&lt;/strong&gt;</span><br><span class="line">				&lt;/p&gt;</span><br><span class="line">				&lt;div className=<span class="string">&quot;checkoutProduct__rating&quot;</span>&gt;</span><br><span class="line">					&#123;<span class="built_in">Array</span>(rating)</span><br><span class="line">						.fill()</span><br><span class="line">						.map(<span class="function">(<span class="params">_, i</span>) =&gt;</span> (</span><br><span class="line">							&lt;p&gt;⭐&lt;/p&gt;</span><br><span class="line">						))&#125;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;button className=<span class="string">&quot;checkoutProduct__removeBtn&quot;</span>&gt;</span><br><span class="line">				Remove From Basket</span><br><span class="line">			&lt;/button&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> CheckoutProduct;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [&#123; basket &#125;, dispatch] = useStateValue();</span><br></pre></td></tr></table></figure>
+<p>在 redux 資料提取上似乎是都離不開這句型的引用，為了能夠做出資料流 checkout.js 也必須加上<br>
+<img src="getBasketinfo-removebtn.png" alt="getBasketinfo-removebtn"></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> removeFromBasket = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// remove the item from the basket</span></span><br><span class="line">		dispatch(&#123;</span><br><span class="line">			type: <span class="string">&quot;REMOVE_FROM_BASKET&quot;</span>,</span><br><span class="line">			id: id,</span><br><span class="line">		&#125;)</span><br><span class="line"><span class="keyword">return</span>(</span><br><span class="line">	&lt;button onClick=&#123;removeFromBasket&#125; &gt;Remove <span class="keyword">from</span> Basket&lt;/button&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>以及移除購屋車商品的功能</p>
 <h2 id="Right-Part"><a class="header-anchor" href="#Right-Part"></a>Right Part</h2>
 <p>原以為右半邊會直接在購物車頁面用ＣＳＳ切出來，沒想到卻是拉出來另外用一個 Component ( Subtotal ) 來做…</p>
-<h3 id="Subtotal-主體內容"><a class="header-anchor" href="#Subtotal-主體內容"></a>Subtotal 主體內容</h3>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Subtotal.js</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./Subtotal.css&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> CurrencyFormat <span class="keyword">from</span> <span class="string">&quot;react-currency-format&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Subtotal</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		&lt;div className=<span class="string">&quot;subtotal&quot;</span>&gt;</span><br><span class="line">			&lt;CurrencyFormat</span><br><span class="line">				renderText=&#123;<span class="function">(<span class="params">value</span>) =&gt;</span> (</span><br><span class="line">					&lt;&gt;</span><br><span class="line">						&lt;p&gt;</span><br><span class="line">							Subtotal (<span class="number">0</span> items): <span class="xml"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>0<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span></span><br><span class="line">						&lt;/p&gt;</span><br><span class="line">						&lt;small className=<span class="string">&quot;subtotal__gift&quot;</span>&gt;</span><br><span class="line">							&lt;input type=<span class="string">&quot;checkbox&quot;</span> name=<span class="string">&quot;&quot;</span> id=<span class="string">&quot;&quot;</span> /&gt;</span><br><span class="line">							This order is contains a gift</span><br><span class="line">						&lt;/small&gt;</span><br><span class="line">					&lt;/&gt;</span><br><span class="line">				)&#125;</span><br><span class="line">				decimalScale=&#123;<span class="number">2</span>&#125;</span><br><span class="line">				value=&#123;<span class="number">0</span>&#125;</span><br><span class="line">				displayType=&#123;<span class="string">&quot;text&quot;</span>&#125;</span><br><span class="line">				thousandSeparator=&#123;<span class="literal">true</span>&#125;</span><br><span class="line">				prefix=&#123;<span class="string">&quot;$&quot;</span>&#125;</span><br><span class="line">			/&gt;</span><br><span class="line">			&lt;button&gt;Proceed to Checkout&lt;/button&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>影片中用到一個 react-currency-format 的套件，理解上應該是一個支援自訂義解析 code 匯出的資料格式，像是數字上的價格顯示千分位單位或是一塊幾毛諸如此類</p>
 <figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// install</span><br><span class="line">npm i react-currency-format</span><br></pre></td></tr></table></figure>
-<p>–<br>
-待補完</p>
+<h3 id="Subtotal-主體內容"><a class="header-anchor" href="#Subtotal-主體內容"></a>Subtotal 主體內容</h3>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Subtotal.js</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./Subtotal.css&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> CurrencyFormat <span class="keyword">from</span> <span class="string">&quot;react-currency-format&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Subtotal</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		&lt;div className=<span class="string">&quot;subtotal&quot;</span>&gt;</span><br><span class="line">			&lt;CurrencyFormat</span><br><span class="line">				renderText=&#123;<span class="function">(<span class="params">value</span>) =&gt;</span> (</span><br><span class="line">					&lt;&gt;</span><br><span class="line">						&lt;p&gt;</span><br><span class="line">							Subtotal (<span class="number">0</span> items): <span class="xml"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>0<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span></span><br><span class="line">						&lt;/p&gt;</span><br><span class="line">						&lt;small className=<span class="string">&quot;subtotal__gift&quot;</span>&gt;</span><br><span class="line">							&lt;input type=<span class="string">&quot;checkbox&quot;</span> name=<span class="string">&quot;&quot;</span> id=<span class="string">&quot;&quot;</span> /&gt;</span><br><span class="line">							This order is contains a gift</span><br><span class="line">						&lt;/small&gt;</span><br><span class="line">					&lt;/&gt;</span><br><span class="line">				)&#125;</span><br><span class="line">				decimalScale=&#123;<span class="number">2</span>&#125;</span><br><span class="line">				value=&#123;<span class="number">0</span>&#125;</span><br><span class="line">				displayType=&#123;<span class="string">&quot;text&quot;</span>&#125;</span><br><span class="line">				thousandSeparator=&#123;<span class="literal">true</span>&#125;</span><br><span class="line">				prefix=&#123;<span class="string">&quot;$&quot;</span>&#125;</span><br><span class="line">			/&gt;</span><br><span class="line">			&lt;button&gt;Proceed to Checkout&lt;/button&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -302,8 +309,9 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag"># 學習</a>
               <a href="/tags/React/" rel="tag"># React</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
               <a href="/tags/Clone-Project/" rel="tag"># Clone Project</a>
           </div>
 
@@ -316,7 +324,10 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
     <a href="/2020/Program/ReactJS-Challenge-Amazon-clone/" rel="prev" title="ReactJS Challenge-Amazon Clone">
       <i class="fa fa-chevron-left"></i> ReactJS Challenge-Amazon Clone
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/Program/ReactJS-Challenge-Amazon-Clone-Redux/" rel="next" title="ReactJS Challenge-Amazon Clone Redux">
+      ReactJS Challenge-Amazon Clone Redux <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -398,7 +409,7 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React-Router-DOM"><span class="nav-number">1.0.1.</span> <span class="nav-text">React Router DOM</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B3%BC%E7%89%A9%E8%BB%8A"><span class="nav-number">2.</span> <span class="nav-text">購物車</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%BC%E7%89%A9%E8%BB%8A%E5%85%A7%E5%AE%B9%E4%B8%BB%E9%AB%94"><span class="nav-number">2.1.</span> <span class="nav-text">購物車內容主體</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Left-Part"><span class="nav-number">2.2.</span> <span class="nav-text">Left Part</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Right-Part"><span class="nav-number">2.3.</span> <span class="nav-text">Right Part</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Subtotal-%E4%B8%BB%E9%AB%94%E5%85%A7%E5%AE%B9"><span class="nav-number">2.3.1.</span> <span class="nav-text">Subtotal 主體內容</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React-Router-DOM"><span class="nav-number">1.0.1.</span> <span class="nav-text">React Router DOM</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B3%BC%E7%89%A9%E8%BB%8A"><span class="nav-number">2.</span> <span class="nav-text">購物車</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%BC%E7%89%A9%E8%BB%8A%E5%85%A7%E5%AE%B9%E4%B8%BB%E9%AB%94"><span class="nav-number">2.1.</span> <span class="nav-text">購物車內容主體</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Left-Part"><span class="nav-number">2.2.</span> <span class="nav-text">Left Part</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B3%BC%E7%89%A9%E8%BB%8A%E6%B8%85%E5%96%AE%E7%9A%84%E4%B8%BB%E9%AB%94"><span class="nav-number">2.2.1.</span> <span class="nav-text">購物車清單的主體</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Right-Part"><span class="nav-number">2.3.</span> <span class="nav-text">Right Part</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Subtotal-%E4%B8%BB%E9%AB%94%E5%85%A7%E5%AE%B9"><span class="nav-number">2.3.1.</span> <span class="nav-text">Subtotal 主體內容</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -414,7 +425,7 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -471,12 +482,12 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">15k</span>
+    <span title="總字數">18k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">28 分鐘</span>
+    <span title="所需總閱讀時間">32 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
   </div>
