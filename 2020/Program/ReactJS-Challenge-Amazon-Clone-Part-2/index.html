@@ -30,11 +30,11 @@
 <meta property="og:image" content="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/origin.png">
 <meta property="og:image" content="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/getBasketinfo-removebtn.png">
 <meta property="article:published_time" content="2020-09-23T20:00:31.000Z">
-<meta property="article:modified_time" content="2020-09-29T14:31:15.461Z">
+<meta property="article:modified_time" content="2020-09-29T15:27:03.513Z">
 <meta property="article:author" content="Paker Chang">
 <meta property="article:tag" content="學習">
-<meta property="article:tag" content="React">
 <meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="React">
 <meta property="article:tag" content="Clone Project">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/origin.png">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-09-29 22:31:15" itemprop="dateModified" datetime="2020-09-29T22:31:15+08:00">2020-09-29</time>
+                <time title="修改時間：2020-09-29 23:27:03" itemprop="dateModified" datetime="2020-09-29T23:27:03+08:00">2020-09-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -290,10 +290,10 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
 <h3 id="購物車清單的主體"><a class="header-anchor" href="#購物車清單的主體"></a>購物車清單的主體</h3>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./CheckoutProduct.css&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useStateValue &#125; <span class="keyword">from</span> <span class="string">&quot;./StateProvider&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CheckoutProduct</span>(<span class="params">id, image, title, price, rating</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> [&#123; basket &#125;, dispatch] = useStateValue();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		&lt;div className=<span class="string">&quot;checkoutProduct&quot;</span>&gt;</span><br><span class="line">			&lt;img className=<span class="string">&quot;checkProduct__image&quot;</span> src=&#123;image&#125; alt=<span class="string">&quot;&quot;</span> /&gt;</span><br><span class="line">			&lt;div className=<span class="string">&quot;checkProduct__info&quot;</span>&gt;</span><br><span class="line">				&lt;p&gt;&#123;title&#125;&lt;/p&gt;</span><br><span class="line">				&lt;p className=<span class="string">&quot;checkoutProduct__price&quot;</span>&gt;</span><br><span class="line">					&lt;small&gt;$&lt;/small&gt;</span><br><span class="line">					&lt;strong&gt;&#123;price&#125;&lt;/strong&gt;</span><br><span class="line">				&lt;/p&gt;</span><br><span class="line">				&lt;div className=<span class="string">&quot;checkoutProduct__rating&quot;</span>&gt;</span><br><span class="line">					&#123;<span class="built_in">Array</span>(rating)</span><br><span class="line">						.fill()</span><br><span class="line">						.map(<span class="function">(<span class="params">_, i</span>) =&gt;</span> (</span><br><span class="line">							&lt;p&gt;⭐&lt;/p&gt;</span><br><span class="line">						))&#125;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">			&lt;button className=<span class="string">&quot;checkoutProduct__removeBtn&quot;</span>&gt;</span><br><span class="line">				Remove From Basket</span><br><span class="line">			&lt;/button&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> CheckoutProduct;</span><br></pre></td></tr></table></figure>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [&#123; basket &#125;, dispatch] = useStateValue();</span><br></pre></td></tr></table></figure>
-<p>在 redux 資料提取上似乎是都離不開這句型的引用，為了能夠做出資料流 checkout.js 也必須加上<br>
-<img src="getBasketinfo-removebtn.png" alt="getBasketinfo-removebtn"></p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> removeFromBasket = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// remove the item from the basket</span></span><br><span class="line">		dispatch(&#123;</span><br><span class="line">			type: <span class="string">&quot;REMOVE_FROM_BASKET&quot;</span>,</span><br><span class="line">			id: id,</span><br><span class="line">		&#125;)</span><br><span class="line"><span class="keyword">return</span>(</span><br><span class="line">	&lt;button onClick=&#123;removeFromBasket&#125; &gt;Remove <span class="keyword">from</span> Basket&lt;/button&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>在 redux 資料提取上似乎是都離不開這句型的引用，為了能夠做出資料流 checkout.js 也必須加上</p>
+<p><img src="getBasketinfo-removebtn.png" alt="getBasketinfo-removebtn"></p>
 <p>以及移除購屋車商品的功能</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> removeFromBasket = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// remove the item from the basket</span></span><br><span class="line">		dispatch(&#123;</span><br><span class="line">			type: <span class="string">&quot;REMOVE_FROM_BASKET&quot;</span>,</span><br><span class="line">			id: id,</span><br><span class="line">		&#125;)</span><br><span class="line"><span class="keyword">return</span>(</span><br><span class="line">	&lt;button onClick=&#123;removeFromBasket&#125; &gt;Remove <span class="keyword">from</span> Basket&lt;/button&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <h2 id="Right-Part"><a class="header-anchor" href="#Right-Part"></a>Right Part</h2>
 <p>原以為右半邊會直接在購物車頁面用ＣＳＳ切出來，沒想到卻是拉出來另外用一個 Component ( Subtotal ) 來做…</p>
 <p>影片中用到一個 react-currency-format 的套件，理解上應該是一個支援自訂義解析 code 匯出的資料格式，像是數字上的價格顯示千分位單位或是一塊幾毛諸如此類</p>
@@ -310,8 +310,8 @@ Link 作用很像 <code>a</code> tag 裡面的 <code>href</code> ，但語法上
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag"># 學習</a>
-              <a href="/tags/React/" rel="tag"># React</a>
               <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/React/" rel="tag"># React</a>
               <a href="/tags/Clone-Project/" rel="tag"># Clone Project</a>
           </div>
 
