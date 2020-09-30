@@ -22,7 +22,7 @@
 
   <meta name="description" content=" 跟著Clever Programmer ReactJS Challenge 活動實作範例，寫了一篇文章來紀錄碰到有查詢過的問題，目前打算以切割頁面分段的方式來記錄，該專案估計會寫個兩三篇 ，相關連結之後會放在文章最底部">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ReactJS Challenge-Amazon Clone">
+<meta property="og:title" content="ReactJS Challenge-Amazon Clone - HomePage&amp;Header">
 <meta property="og:url" content="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-clone/index.html">
 <meta property="og:site_name" content="PakerChang&#39;s Blog">
 <meta property="og:description" content=" 跟著Clever Programmer ReactJS Challenge 活動實作範例，寫了一篇文章來紀錄碰到有查詢過的問題，目前打算以切割頁面分段的方式來記錄，該專案估計會寫個兩三篇 ，相關連結之後會放在文章最底部">
@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-clone/Home.png">
 <meta property="og:image" content="https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-clone/Products.png">
 <meta property="article:published_time" content="2020-09-14T12:22:52.000Z">
-<meta property="article:modified_time" content="2020-09-30T16:26:11.592Z">
+<meta property="article:modified_time" content="2020-09-30T16:35:24.860Z">
 <meta property="article:author" content="Paker Chang">
 <meta property="article:tag" content="學習">
 <meta property="article:tag" content="JavaScript">
@@ -53,7 +53,7 @@
   };
 </script>
 
-  <title>ReactJS Challenge-Amazon Clone | PakerChang's Blog</title>
+  <title>ReactJS Challenge-Amazon Clone - HomePage&Header | PakerChang's Blog</title>
   
 
 
@@ -211,7 +211,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ReactJS Challenge-Amazon Clone
+          ReactJS Challenge-Amazon Clone - HomePage&Header
         </h1>
 
         <div class="post-meta">
@@ -228,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-10-01 00:26:11" itemprop="dateModified" datetime="2020-10-01T00:26:11+08:00">2020-10-01</time>
+                <time title="修改時間：2020-10-01 00:35:24" itemprop="dateModified" datetime="2020-10-01T00:35:24+08:00">2020-10-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -318,7 +318,7 @@
 <br>
 <p>主頁面暫且到這邊就算告一段落了，接下來就是 react-router-dom 的使用，分派主次頁面路徑。</p>
 <h1 id="續文"><a class="header-anchor" href="#續文"></a>續文</h1>
-<h2 id="Amazon-Clone-Part-2"><a class="header-anchor" href="#Amazon-Clone-Part-2"></a><a target="_blank" rel="noopener" href="https://blog-pakerchang.tk/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/">Amazon Clone Part 2</a></h2>
+<h2 id="Amazon-Clone-Shopping-Basket"><a class="header-anchor" href="#Amazon-Clone-Shopping-Basket"></a><a target="_blank" rel="noopener" href="https://blog-pakerchang.tk/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/">Amazon Clone - Shopping Basket </a></h2>
 <h2 id="Amazon-Clone-Redux"><a class="header-anchor" href="#Amazon-Clone-Redux"></a><a target="_blank" rel="noopener" href="https://blog-pakerchang.tk/2020/Program/ReactJS-Challenge-Amazon-Clone-Redux/">Amazon Clone - Redux</a></h2>
 
     </div>
@@ -345,8 +345,8 @@
       <i class="fa fa-chevron-left"></i> Hexo 插件
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/" rel="next" title="ReactJS Challenge-Amazon Clone Part 2">
-      ReactJS Challenge-Amazon Clone Part 2 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/Program/ReactJS-Challenge-Amazon-Clone-Part-2/" rel="next" title="ReactJS Challenge-Amazon Clone - Shopping Basket">
+      ReactJS Challenge-Amazon Clone - Shopping Basket <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -429,7 +429,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Header-%E5%AF%A6%E4%BD%9C%E5%B0%8E%E8%A6%BD%E9%A0%81"><span class="nav-number">1.</span> <span class="nav-text">Header 實作導覽頁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E6%9F%A5%E9%81%8E%E7%9A%84CSS"><span class="nav-number">1.1.</span> <span class="nav-text">有查過的ＣＳＳ</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Home-%E9%A0%81%E9%9D%A2%E4%B8%BB%E9%AB%94%E5%85%A7%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">Home 頁面主體內容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Products-%E5%95%86%E5%93%81%E5%8D%A1%E5%85%A7%E5%AE%B9"><span class="nav-number">3.</span> <span class="nav-text">Products 商品卡內容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%8C%E6%96%87"><span class="nav-number"></span> <span class="nav-text">續文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Clone-Part-2"><span class="nav-number">1.</span> <span class="nav-text">Amazon Clone Part 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Clone-Redux"><span class="nav-number">2.</span> <span class="nav-text">Amazon Clone - Redux</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Header-%E5%AF%A6%E4%BD%9C%E5%B0%8E%E8%A6%BD%E9%A0%81"><span class="nav-number">1.</span> <span class="nav-text">Header 實作導覽頁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E6%9F%A5%E9%81%8E%E7%9A%84CSS"><span class="nav-number">1.1.</span> <span class="nav-text">有查過的ＣＳＳ</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Home-%E9%A0%81%E9%9D%A2%E4%B8%BB%E9%AB%94%E5%85%A7%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">Home 頁面主體內容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Products-%E5%95%86%E5%93%81%E5%8D%A1%E5%85%A7%E5%AE%B9"><span class="nav-number">3.</span> <span class="nav-text">Products 商品卡內容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%8C%E6%96%87"><span class="nav-number"></span> <span class="nav-text">續文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Clone-Shopping-Basket"><span class="nav-number">1.</span> <span class="nav-text">Amazon Clone - Shopping Basket </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Clone-Redux"><span class="nav-number">2.</span> <span class="nav-text">Amazon Clone - Redux</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -445,7 +445,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -632,7 +632,7 @@ window.addEventListener('pjax:success', () => {
   var disqus_config = function() {
     this.page.url = "https://pakerchang.github.io/2020/Program/ReactJS-Challenge-Amazon-clone/";
     this.page.identifier = "2020/Program/ReactJS-Challenge-Amazon-clone/";
-    this.page.title = "ReactJS Challenge-Amazon Clone";
+    this.page.title = "ReactJS Challenge-Amazon Clone - HomePage&Header";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
