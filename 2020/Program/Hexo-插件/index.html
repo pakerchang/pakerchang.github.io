@@ -303,8 +303,8 @@
       <i class="fa fa-chevron-left"></i> Github 搬家到 Gitlab
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/Program/ReactJS-Challenge-Amazon-clone/" rel="next" title="ReactJS Challenge-Amazon Clone - HomePage&Header">
-      ReactJS Challenge-Amazon Clone - HomePage&Header <i class="fa fa-chevron-right"></i>
+    <a href="/2020/Program/%E8%BF%91%E6%9C%9F%E7%AF%84%E4%BE%8B/" rel="next" title="近期範例">
+      近期範例 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -403,7 +403,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -416,7 +416,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -460,12 +460,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">21k</span>
+    <span title="總字數">5k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">38 分鐘</span>
+    <span title="所需總閱讀時間">10 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
   </div>
@@ -586,6 +586,26 @@ window.addEventListener('pjax:success', () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'eb7a26f8758372c09682',
+      clientSecret: 'c9ee983d2f44c7ed3a393e04dac6f6ef1da2e54f',
+      repo        : 'pakerchang.github.io',
+      owner       : 'pakerchang',
+      admin       : ['pakerchang'],
+      id          : '81add040047ab9935dd62f753be5555c',
+        language: 'zh-TW',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
 <script>
   var disqus_config = function() {
     this.page.url = "https://pakerchang.github.io/2020/Program/Hexo-%E6%8F%92%E4%BB%B6/";
@@ -605,26 +625,6 @@ window.addEventListener('pjax:success', () => {
       (d.head || d.body).appendChild(s);
     }
   });
-</script>
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-<script>
-NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
-    var gitalk = new Gitalk({
-      clientID    : 'eb7a26f8758372c09682',
-      clientSecret: 'c9ee983d2f44c7ed3a393e04dac6f6ef1da2e54f',
-      repo        : 'pakerchang.github.io',
-      owner       : 'pakerchang',
-      admin       : ['pakerchang'],
-      id          : '81add040047ab9935dd62f753be5555c',
-        language: 'zh-TW',
-      distractionFreeMode: true
-    });
-    gitalk.render('gitalk-container');
-  }, window.Gitalk);
-});
 </script>
 
     </div>

@@ -525,7 +525,7 @@ print s<br>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -538,7 +538,7 @@ print s<br>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -582,12 +582,12 @@ print s<br>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">21k</span>
+    <span title="總字數">5k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">38 分鐘</span>
+    <span title="所需總閱讀時間">10 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
   </div>
@@ -708,6 +708,26 @@ window.addEventListener('pjax:success', () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'eb7a26f8758372c09682',
+      clientSecret: 'c9ee983d2f44c7ed3a393e04dac6f6ef1da2e54f',
+      repo        : 'pakerchang.github.io',
+      owner       : 'pakerchang',
+      admin       : ['pakerchang'],
+      id          : '902aa3eae219c968df5f9d0c256ffeaa',
+        language: 'zh-TW',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
 <script>
   var disqus_config = function() {
     this.page.url = "https://pakerchang.github.io/2020/Program/Markdown-%E5%B8%B8%E7%94%A8%E8%AA%9E%E6%B3%95/";
@@ -727,26 +747,6 @@ window.addEventListener('pjax:success', () => {
       (d.head || d.body).appendChild(s);
     }
   });
-</script>
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-<script>
-NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
-    var gitalk = new Gitalk({
-      clientID    : 'eb7a26f8758372c09682',
-      clientSecret: 'c9ee983d2f44c7ed3a393e04dac6f6ef1da2e54f',
-      repo        : 'pakerchang.github.io',
-      owner       : 'pakerchang',
-      admin       : ['pakerchang'],
-      id          : '902aa3eae219c968df5f9d0c256ffeaa',
-        language: 'zh-TW',
-      distractionFreeMode: true
-    });
-    gitalk.render('gitalk-container');
-  }, window.Gitalk);
-});
 </script>
 
     </div>
