@@ -211,7 +211,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2020-11-07 06:48:12 / 修改時間：07:24:47" itemprop="dateCreated datePublished" datetime="2020-11-07T06:48:12+08:00">2020-11-07</time>
+              <time title="創建時間：2020-11-07 06:48:12 / 修改時間：07:25:10" itemprop="dateCreated datePublished" datetime="2020-11-07T06:48:12+08:00">2020-11-07</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,7 +229,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>595</span>
+              <span>596</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
 
       
           <p>做範例寫 code 的時候剛好碰到 <code>event.target.value</code>的使用，<a target="_blank" rel="noopener" href="https://blog.csdn.net/Nalaluky/article/details/80899802">查了一下</a> 湊巧碰到解釋 <code>this</code> 與 <code>event.target.value</code>的差別，順手寫了一篇來記錄</p>
-<p>根據內容用自己的語言來解釋的話， <code>this</code> 是具有指名意味的唯一性</p>
+<p>根據內容用自己的語言來解釋的話， <code>this</code> 是具有指名意味的唯一性的</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;aaron&quot;</span>&gt;</span>input：</span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;target1&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">value</span>=<span class="string">&quot;监听input的改变&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>倘若 <code>this</code> 指定的是在<code>input (class: target1)</code>那麼監聽的元素就只會定位在該<code>input</code>上，<code>event.target.value</code>則不同</p>
 <p><code>event.target.value</code>的監聽過程在判斷時會有進位的狀況，照上面例子來看，假如<code>event.target.value</code>定位是設在<code>div class: arron</code>，那麼實際監聽對象會是在該元素區塊最裡層的元素，也就是 <code>input</code> </p>
