@@ -616,6 +616,26 @@ window.addEventListener('pjax:success', () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'eb7a26f8758372c09682',
+      clientSecret: 'c9ee983d2f44c7ed3a393e04dac6f6ef1da2e54f',
+      repo        : 'pakerchang.github.io',
+      owner       : 'pakerchang',
+      admin       : ['pakerchang'],
+      id          : 'd40bde2480eb8b9992e277e2dd7f422a',
+        language: 'zh-TW',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
 <script>
   var disqus_config = function() {
     this.page.url = "https://pakerchang.github.io/2020/Program/%E8%BF%91%E6%9C%9F%E7%AF%84%E4%BE%8B/";
@@ -635,26 +655,6 @@ window.addEventListener('pjax:success', () => {
       (d.head || d.body).appendChild(s);
     }
   });
-</script>
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-<script>
-NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
-    var gitalk = new Gitalk({
-      clientID    : 'eb7a26f8758372c09682',
-      clientSecret: 'c9ee983d2f44c7ed3a393e04dac6f6ef1da2e54f',
-      repo        : 'pakerchang.github.io',
-      owner       : 'pakerchang',
-      admin       : ['pakerchang'],
-      id          : 'd40bde2480eb8b9992e277e2dd7f422a',
-        language: 'zh-TW',
-      distractionFreeMode: true
-    });
-    gitalk.render('gitalk-container');
-  }, window.Gitalk);
-});
 </script>
 
     </div>
