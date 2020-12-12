@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2020-12-13 05:59:44 / 修改時間：06:21:09" itemprop="dateCreated datePublished" datetime="2020-12-13T05:59:44+08:00">2020-12-13</time>
+              <time title="創建時間：2020-12-13 05:59:44 / 修改時間：06:27:11" itemprop="dateCreated datePublished" datetime="2020-12-13T05:59:44+08:00">2020-12-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -234,7 +234,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>638</span>
+              <span>639</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -256,8 +256,8 @@
           <p>最近跟朋友聊到 token 用的字串亂數生成，由 A-Z、0-9 在兩者內取六個字串作為 token，研究了一下順手寫下來記錄</p>
 <p>一般大多網上使用的都是以 for 迴圈生成</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> characters =</span><br><span class="line">	<span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateString</span>(<span class="params">length</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> result = <span class="string">&quot; &quot;</span>;</span><br><span class="line">	<span class="keyword">const</span> charactersLength = characters.length;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">		result += characters.charAt(</span><br><span class="line">			<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * charactersLength)</span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(generateString(<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
-<p>不過聽依朋友的說法， for 迴圈在效能上比較吃重，而 JavaScript 的 <code>toString</code> 支援各進位法，其中 <code>36</code> 正好是以 A-Z、0-9 為區間取樣<br>
-一行就能搞定</p>
+<p>不過依朋友的說法， for 迴圈在效能上比較吃重，而 JavaScript 的 <code>toString</code> 支援各進位法<br>
+其中 <code>36</code> 進位正好是以 A-Z、0-9 為區間取樣，一行就能搞定</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cosnt token = <span class="built_in">Math</span>.random().toString(<span class="number">36</span>).substring(<span class="number">2</span>,<span class="number">8</span>); </span><br><span class="line"><span class="comment">// 0.m7pmnp4h1zk , 第三位開始取至第9位，共計 6 個字串</span></span><br><span class="line"><span class="built_in">console</span>.log(token); <span class="comment">// m7pmnp</span></span><br></pre></td></tr></table></figure>
 
       
@@ -1251,16 +1251,6 @@
   </div>
 
 
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="https://pakerchang.github.io/" title="https:&#x2F;&#x2F;pakerchang.github.io">Title</a>
-        </li>
-    </ul>
-  </div>
 
       </div>
 
